@@ -22,11 +22,14 @@ public class Address {
     public void setFlat(int flat) {
         this.flat = flat;
     }
+
     @Override
     public String toString() {
-        return "Address:"
-                + this.town + ", str." + this.street
-                + " " + this.building + ", apt. "
-                + this.flat + ".";
+        return "Address{" +
+                "town='" + this.town + '\'' +
+                ", street='" + this.street + '\'' +
+                ", building=" + this.building +
+                ", flat=" + this.flat +
+                '}';
     }
 }

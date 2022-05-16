@@ -30,9 +30,11 @@ public class Main {
         students[8] = new Student("Lukas", "Bradtke", 20, address11);
         students[9] = new Student("Chelsey", "Lowe", 21, address12);
 
+        Group group1 = new Group("131B", 1 , students, teacher1, 5);
+        Group group2 = new Group("142A", 2, students, teacher2, 5);
 
-        Group group1 = new Group("131B", 1 , students, teacher1);
-        Group group2 = new Group("142A", 2, students, teacher2);
+        group1.setNumberOfStudents(3);
+        group2.setNumberOfStudents(6);
 
         System.out.println(group1);
         System.out.println(group2);
