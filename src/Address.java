@@ -25,11 +25,11 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
+        return "Address: " +
                 "town='" + this.town + '\'' +
                 ", street='" + this.street + '\'' +
                 ", building=" + this.building +
                 ", flat=" + this.flat +
-                '}';
+                ';';
     }
 }

@@ -6,7 +6,7 @@ public class Student extends People{
 
     @Override
     public String toString() {
-        return "Student: " + super.getName() + " " + this.getFamilyname() + ", " + this.getAge() + " years;" + "\t" +
-                this.address.toString();
+        return "Student: " + super.getName() + " " + super.getFamilyname() + ", " + super.getAge() + " years;" + "\t"
+                + "\t" + super.address.toString();
     }
 }

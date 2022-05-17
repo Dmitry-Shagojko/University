@@ -22,4 +22,9 @@ public abstract class People {
     public Address getAddress() {
         return address;
     }
+    @Override
+    public String toString() {
+        return getClass() + ": " + this.name + " " + this.familyname + ", " + this.age + " years;" + "\t" +
+                this.address.toString();
+    }
 }

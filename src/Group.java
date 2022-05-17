@@ -37,7 +37,6 @@ public class Group {
         this.teacher = teacher;
     }
     public Student[] deleteStudent (Student [] pullStudents1, int numberOfStudent){
-        //int newNumb = pullStudents1.length;
         int i = 0;
         int j = 0;
         Student[] newPullStudents1 = new Student[pullStudents1.length];
@@ -48,28 +47,24 @@ public class Group {
             } else {
                 newPullStudents1[i] = pullStudents1[i];
             }
-
         } for (i = 0, j = 0; i < pullStudents1.length; i++){
             if (newPullStudents1[i] != null){
                 finalNewPullStudents1[j] = newPullStudents1[i];
                 j++;
             }
         }
-
         return Arrays.copyOf(finalNewPullStudents1, finalNewPullStudents1.length);
     }
-//    public Student[] changeNumberOfStudents(Student[] studentsA){
-//        String[] array = new String[getNumberOfStudents()];
-//        if (array.length-1 > studentsA.length - 1){
-//            int k = array.length -1 - studentsA.length -1;
-//        } String[] newArray = Arrays.copyOf(array)
-
-//        }
+    public Student[] addStudent (Student [] pullStudents1){
+        Student[] newPullStudents1 = new Student[pullStudents1.length+1];
+        for (int i = 0; i < pullStudents1.length; i++){
+            newPullStudents1[i] = pullStudents1[i];
+        }
+        return Arrays.copyOf(newPullStudents1, newPullStudents1.length);
+    }
 
     @Override
     public String toString() {
-        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n" +
-                this.student.toString() + "\n" +
-                this.teacher.toString() + "\n";
+        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n";
     }
 }
