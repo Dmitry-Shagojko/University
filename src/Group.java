@@ -5,14 +5,12 @@ public class Group {
     private int course;
     private Student[] student;
     private Teacher teacher;
-    private int numberOfStudents;
 
-    public Group(String nameGroup, int course, Student[] student, Teacher teacher, int numberOfStudents) {
+    public Group(String nameGroup, int course, Student[] student, Teacher teacher) {
         this.nameGroup = nameGroup;
         this.course = course;
         this.student = student;
         this.teacher = teacher;
-        this.numberOfStudents = numberOfStudents;
     }
     public String getNameGroup() {
         return nameGroup;
@@ -38,11 +36,27 @@ public class Group {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-    public int getNumberOfStudents() {
-        return numberOfStudents;
-    }
-    public void setNumberOfStudents(int numberOfStudents) {
-        this.numberOfStudents = numberOfStudents;
+    public Student[] deleteStudent (Student [] pullStudents1, int numberOfStudent){
+        //int newNumb = pullStudents1.length;
+        int i = 0;
+        int j = 0;
+        Student[] newPullStudents1 = new Student[pullStudents1.length];
+        Student[] finalNewPullStudents1 = new Student[pullStudents1.length - 1];
+        for (i = 0; i < newPullStudents1.length; i++){
+            if (i == numberOfStudent){
+                newPullStudents1[i] = null;
+            } else {
+                newPullStudents1[i] = pullStudents1[i];
+            }
+
+        } for (i = 0, j = 0; i < pullStudents1.length; i++){
+            if (newPullStudents1[i] != null){
+                finalNewPullStudents1[j] = newPullStudents1[i];
+                j++;
+            }
+        }
+
+        return Arrays.copyOf(finalNewPullStudents1, finalNewPullStudents1.length);
     }
 //    public Student[] changeNumberOfStudents(Student[] studentsA){
 //        String[] array = new String[getNumberOfStudents()];
