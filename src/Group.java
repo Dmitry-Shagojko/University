@@ -3,13 +3,13 @@ import java.util.Arrays;
 public class Group {
     private String nameGroup;
     private int course;
-    private Student[] student;
+    private Student[] students;
     private Teacher teacher;
 
-    public Group(String nameGroup, int course, Student[] student, Teacher teacher) {
+    public Group(String nameGroup, int course, Student[] students, Teacher teacher) {
         this.nameGroup = nameGroup;
         this.course = course;
-        this.student = student;
+        this.students = students;
         this.teacher = teacher;
     }
     public String getNameGroup() {
@@ -24,11 +24,11 @@ public class Group {
     public void setCourse(int course) {
         this.course = course;
     }
-    public Student[] getStudent() {
-        return student;
+    public Student[] getStudents() {
+        return students;
     }
-    public void setStudent(Student[] student) {
-        this.student = student;
+    public void setStudents(Student[] students) {
+        this.students = students;
     }
     public Teacher getTeacher() {
         return teacher;
@@ -36,35 +36,36 @@ public class Group {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-    public Student[] deleteStudent (Student [] pullStudents1, int numberOfStudent){
+    public Student[] deleteStudent (int numberOfStudent){
         int i = 0;
         int j = 0;
-        Student[] newPullStudents1 = new Student[pullStudents1.length];
-        Student[] finalNewPullStudents1 = new Student[pullStudents1.length - 1];
-        for (i = 0; i < newPullStudents1.length; i++){
+        Student[] finalNewPullStudents1 = new Student[students.length - 1];
+        for (i = 0; i < students.length; i++){
             if (i == numberOfStudent){
-                newPullStudents1[i] = null;
+                students[i] = null;
             } else {
-                newPullStudents1[i] = pullStudents1[i];
+                students[i] = students[i];
             }
-        } for (i = 0, j = 0; i < pullStudents1.length; i++){
-            if (newPullStudents1[i] != null){
-                finalNewPullStudents1[j] = newPullStudents1[i];
+        } for (i = 0, j = 0; i < students.length; i++){
+            if (students[i] != null){
+                finalNewPullStudents1[j] = students[i];
                 j++;
             }
         }
         return Arrays.copyOf(finalNewPullStudents1, finalNewPullStudents1.length);
     }
-    public Student[] addStudent (Student [] pullStudents1){
-        Student[] newPullStudents1 = new Student[pullStudents1.length+1];
-        for (int i = 0; i < pullStudents1.length; i++){
-            newPullStudents1[i] = pullStudents1[i];
+    public Student[] addStudent(Student student){
+        for (int i = 0; i < students.length; i++){
+            if (students[i] == null){
+                students[i] = student;
+                break;
+            }
         }
-        return Arrays.copyOf(newPullStudents1, newPullStudents1.length);
+        return Arrays.copyOf(students, students.length);
     }
 
     @Override
     public String toString() {
-        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n";
+        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n" + students.toString();
     }
 }
