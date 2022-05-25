@@ -1,12 +1,13 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Group {
     private String nameGroup;
     private int course;
-    private Student[] students;
+    private ArrayList<Student> students;
     private Teacher teacher;
 
-    public Group(String nameGroup, int course, Student[] students, Teacher teacher) {
+    public Group(String nameGroup, int course, ArrayList<Student> students, Teacher teacher) {
         this.nameGroup = nameGroup;
         this.course = course;
         this.students = students;
@@ -24,10 +25,10 @@ public class Group {
     public void setCourse(int course) {
         this.course = course;
     }
-    public Student[] getStudents() {
+    public ArrayList<Student> getStudents() {
         return students;
     }
-    public void setStudents(Student[] students) {
+    public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
     public Teacher getTeacher() {
@@ -36,32 +37,13 @@ public class Group {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-    public Student[] deleteStudent (int numberOfStudent){
-        int i = 0;
-        int j = 0;
-        Student[] finalNewPullStudents1 = new Student[students.length - 1];
-        for (i = 0; i < students.length; i++){
-            if (i == numberOfStudent){
-                students[i] = null;
-            } else {
-                students[i] = students[i];
-            }
-        } for (i = 0, j = 0; i < students.length; i++){
-            if (students[i] != null){
-                finalNewPullStudents1[j] = students[i];
-                j++;
-            }
-        }
-        return Arrays.copyOf(finalNewPullStudents1, finalNewPullStudents1.length);
+    public ArrayList<Student> deleteStudent (ArrayList<Student> students,int numberOfStudent){
+        students.remove(numberOfStudent);
+        return students;
     }
-    public Student[] addStudent(Student student){
-        for (int i = 0; i < students.length; i++){
-            if (students[i] == null){
-                students[i] = student;
-                break;
-            }
-        }
-        return Arrays.copyOf(students, students.length);
+    public ArrayList<Student> addStudent(ArrayList<Student> students, Student student){
+        students.add(student);
+        return students;
     }
 
     @Override
