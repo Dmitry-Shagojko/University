@@ -1,3 +1,5 @@
+package Model;
+
 public class Student extends People{
 
     public Student(String name, String familyname, int age, Address address){

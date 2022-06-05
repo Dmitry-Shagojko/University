@@ -1,5 +1,6 @@
+package Model;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Group {
     private String nameGroup;
@@ -13,41 +14,51 @@ public class Group {
         this.students = students;
         this.teacher = teacher;
     }
+
     public String getNameGroup() {
         return nameGroup;
     }
+
     public void setNameGroup(String nameGroup) {
         this.nameGroup = nameGroup;
     }
+
     public int getCourse() {
         return course;
     }
+
     public void setCourse(int course) {
         this.course = course;
     }
+
     public ArrayList<Student> getStudents() {
         return students;
     }
+
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
+
     public Teacher getTeacher() {
         return teacher;
     }
+
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-    public ArrayList<Student> deleteStudent (ArrayList<Student> students,int numberOfStudent){
+
+    public ArrayList<Student> deleteStudent(ArrayList<Student> students, int numberOfStudent) {
         students.remove(numberOfStudent);
         return students;
     }
-    public ArrayList<Student> addStudent(ArrayList<Student> students, Student student){
+
+    public ArrayList<Student> addStudent(ArrayList<Student> students, Student student) {
         students.add(student);
         return students;
     }
 
     @Override
     public String toString() {
-        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n" + students.toString();
+        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n" + this.teacher;
     }
 }
