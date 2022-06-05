@@ -2,22 +2,23 @@ package Util;
 
 import Exception.YoungTeacherException;
 import Exception.OldTeacherException;
+import Model.Address;
 import Model.Teacher;
 
 public class AgeTeacherUtil {
 
-    public static boolean checkAge(Teacher teacher) {
+    public static Teacher checkAge(Teacher teacher) {
         try {
             checkYongTeacherAge(teacher.getAge());
             checkOldTeacherAge(teacher.getAge());
             System.out.println("New teacher " + teacher.getName()
                     + " " + teacher.getFamilyname() + " added at university!");
-            return true;
+            return teacher;
         } catch (YoungTeacherException | OldTeacherException e) {
             e.printStackTrace();
             System.out.println("New teacher " + teacher.getName()
                     + " " + teacher.getFamilyname() + " is not added at university!");
-            return false;
+            return null;
         }
     }
 

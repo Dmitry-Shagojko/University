@@ -24,18 +24,12 @@ public class Main {
         Address address11 = new Address("Lake Gabriella", "Sophia Parks", 396, 1);
         Address address12 = new Address("East Augustinestad", "Manley Mountains", 13, 33);
         Address address13 = new Address("Port Maverickberg", "Tromp Route Suite", 72, 29);
-//        Address address14 = new Address("Darrinton", "Granville Greens", 34, 52);
+        Address address14 = new Address("Darrinton", "Granville Greens", 34, 52);
 
         Teacher teacher1 = new Teacher("Petra", "Gutmann", 45, address1);
-        Teacher teacher2 = new Teacher("Bennett", "Pearson", 35, address2);
-        if (AgeTeacherUtil.checkAge(teacher2)) {
-            System.out.println();
-        } else {
-            teacher2.setName(null);
-            teacher2.setFamilyname(null);
-            teacher2.setAge(0);
-        }
-//        Teacher teacher3 = new Teacher("Sheila", "Herzog", 22, address14);
+        Teacher teacher2 = AgeTeacherUtil.checkAge(new Teacher("Bennett", "Pearson", 35, address2));
+        Teacher teacher3 = AgeTeacherUtil.checkAge(new Teacher("Sheila", "Herzog", 24, address14));
+
 
         Student students1 = new Student("Kathlyn", "Alison", 19, address3);
         Student students2 = new Student("David", "Cobb", 20, address4);
