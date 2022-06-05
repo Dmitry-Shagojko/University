@@ -1,3 +1,10 @@
+import Model.Address;
+import Model.Group;
+import Model.Student;
+import Model.Teacher;
+import Util.AgeTeacherUtil;
+
+
 import java.util.ArrayList;
 
 public class Main {
@@ -5,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         Address address1 = new Address("Cruickshanktown", "Doris Camp", 2914, 13);
-        //Address address2 = new Address("East Margarett", "Sabina Ranch", 1, 521);
+        Address address2 = new Address("East Margarett", "Sabina Ranch", 1, 521);
         Address address3 = new Address("Marinaton", "Jovani Points Suite", 15, 101);
         Address address4 = new Address("Garrisonmouth", "Adrienne Parkways", 12, 22);
         Address address5 = new Address("West Robyn", "Elissa Squares", 20, 42);
@@ -17,9 +24,19 @@ public class Main {
         Address address11 = new Address("Lake Gabriella", "Sophia Parks", 396, 1);
         Address address12 = new Address("East Augustinestad", "Manley Mountains", 13, 33);
         Address address13 = new Address("Port Maverickberg", "Tromp Route Suite", 72, 29);
+//        Address address14 = new Address("Darrinton", "Granville Greens", 34, 52);
 
         Teacher teacher1 = new Teacher("Petra", "Gutmann", 45, address1);
-        //Teacher teacher2 = new Teacher("Bennett", "Pearson", 45, address2);
+        Teacher teacher2 = new Teacher("Bennett", "Pearson", 35, address2);
+        if (AgeTeacherUtil.checkAge(teacher2)) {
+            System.out.println();
+        } else {
+            teacher2.setName(null);
+            teacher2.setFamilyname(null);
+            teacher2.setAge(0);
+        }
+//        Teacher teacher3 = new Teacher("Sheila", "Herzog", 22, address14);
+
         Student students1 = new Student("Kathlyn", "Alison", 19, address3);
         Student students2 = new Student("David", "Cobb", 20, address4);
         Student students3 = new Student("Thomas", "Willis", 22, address5);
@@ -45,6 +62,7 @@ public class Main {
         Group group1 = new Group("131B", 1 , students, teacher1);
         students = group1.deleteStudent(students, 2);
         students = group1.addStudent(students, new Student("Toy", "Lowe", 19, address13));
+        System.out.println(group1);
         students.forEach(i -> System.out.println(i));
         teacher1.setSalary(110); // установить количество часов, отработанных за месяц
         System.out.println("Sallary of teacher: " + teacher1.getName() + " "
