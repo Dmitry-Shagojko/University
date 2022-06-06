@@ -4,8 +4,8 @@ public class Teacher extends People {
 
     private int salary;
 
-    public Teacher(String name, String familyname, int age, Address address) {
-        super(name, familyname, age, address);
+    public Teacher(String name, String familyname, int age, String gender, Address address) {
+        super(name, familyname, age, gender, address);
     }
 
     public void setSalary(int salary) {
@@ -25,6 +25,7 @@ public class Teacher extends People {
     @Override
     public String toString() {
         return "Teacher:" + " " + super.getName() + " " + super.getFamilyname() + ", " +
-                super.getAge() + " years;"+ "\t" + "\t" + super.address.toString();
+                super.getAge() + " years, " + super.getGender() + ";" + "\t";
+//                "\t" + super.getAddress();
     }
 }
