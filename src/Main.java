@@ -1,6 +1,7 @@
 import Model.*;
 import Util.AgeTeacherUtil;
 import Util.Converter;
+import Util.MaxSalaryComparator;
 
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class Main {
         Student students10 = new Student("Chelsey", "Lowe", 21, "Female", address12);
         Student students11 = new Student("Harrison", "Hagenes", 20, "Male", address21);
         Student students12 = new Student("Hugh", "Swaniawski", 19, "Male", address22);
-        ArrayList<Student> students = new ArrayList<Student>(){{
+        ArrayList<Student> students = new ArrayList<Student>() {{
             add(students1);
             add(students2);
             add(students3);
@@ -121,7 +122,7 @@ public class Main {
         System.out.println('\n' + "List of teachers by salary level:");
         teachers.stream()                                       //вывод учителей, при условии, что ЗП > 2000 USD
                 .filter(t -> (t.getSalary() > 2_000))
-                .forEach(t -> System.out.println(t.getName() + " " + t.getFamilyname() + ": salary - " +
+                .forEach(t -> System.out.println(t.getName() + " " + t.getFamilyname() + ", " + ": salary - " +
                         t.getSalary() + " USD;"));
 
 
@@ -175,7 +176,7 @@ public class Main {
 
         System.out.println('\n' + "List of groups whose issue year is 2023 - 2024: ");
         listGroup.stream()                                      //ввывод списка групп, выпуск которых 2023 - 2024 года
-                .filter(g -> g.getYearOfIssue() >= 2023 && g.getYearOfIssue() <=2024)
+                .filter(g -> g.getYearOfIssue() >= 2023 && g.getYearOfIssue() <= 2024)
                 .forEach(g -> System.out.println("Group - " + g.getNameGroup() +
                         ". Year of issue - " + g.getYearOfIssue()));
 
@@ -185,5 +186,20 @@ public class Main {
                 .sorted()
                 .collect(Collectors.toList());
         sortedListTeacher.forEach(System.out::println);
+
+        //сортировка Comparable <Student>_по фамилии
+        System.out.println('\n' + "Sorted by Comparable:");
+        students.stream()
+                .sorted()
+                .forEach(t -> System.out.println(t.getFamilyname().concat(" ").concat(t.getName()).concat(", ")
+                        .concat(String.valueOf(t.getAge())).concat(" years")));
+
+        //сортировка Comparator <Teacher)_по ЗП
+        System.out.println('\n' + "Sorted by Comparator:");
+        MaxSalaryComparator maxSalaryComparator = new MaxSalaryComparator();
+        teachers.stream()
+                .sorted(maxSalaryComparator)
+                .forEach(t -> System.out.println(t.getFamilyname().concat(" ").concat(t.getName()).concat(" ")
+                        .concat(" ---> ").concat(String.valueOf(t.getSalary())).concat(" USD")));
     }
 }

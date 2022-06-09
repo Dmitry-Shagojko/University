@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Comparator;
+
 public class Teacher extends People {
 
     private int salary;
