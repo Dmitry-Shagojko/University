@@ -5,17 +5,17 @@ import java.util.ArrayList;
 public class Group {
     private String nameGroup;
     private int course;
-    private int yearOfAdmission;
-    private int yearOfIssue;
+    private int yearOfEntry;
+    private int yearOfGraduation;
     private ArrayList<Student> students;
     private Teacher teacher;
 
-    public Group(String nameGroup, int course, int yearOfAdmission, int yearOfIssue,
+    public Group(String nameGroup, int course, int yearOfEntry, int yearOfGraduation,
                  ArrayList<Student> students, Teacher teacher) {
         this.nameGroup = nameGroup;
         this.course = course;
-        this.yearOfAdmission = yearOfAdmission;
-        this.yearOfIssue = yearOfIssue;
+        this.yearOfEntry = yearOfEntry;
+        this.yearOfGraduation = yearOfGraduation;
         this.students = students;
         this.teacher = teacher;
     }
@@ -36,20 +36,20 @@ public class Group {
         this.course = course;
     }
 
-    public int getYearOfAdmission() {
-        return yearOfAdmission;
+    public int getYearOfEntry() {
+        return yearOfEntry;
     }
 
-    public void setYearOfAdmission(int yearOfAdmission) {
-        this.yearOfAdmission = yearOfAdmission;
+    public void setYearOfEntry(int yearOfEntry) {
+        this.yearOfEntry = yearOfEntry;
     }
 
-    public int getYearOfIssue() {
-        return yearOfIssue;
+    public int getYearOfGraduation() {
+        return yearOfGraduation;
     }
 
-    public void setYearOfIssue(int yearOfIssue) {
-        this.yearOfIssue = yearOfIssue;
+    public void setYearOfGraduation(int yearOfGraduation) {
+        this.yearOfGraduation = yearOfGraduation;
     }
 
     public ArrayList<Student> getStudents() {
@@ -68,18 +68,34 @@ public class Group {
         this.teacher = teacher;
     }
 
-    public ArrayList<Student> deleteStudent(ArrayList<Student> students, int numberOfStudent) {
-        students.remove(numberOfStudent);
-        return students;
+    public void deleteStudentGroup1(ArrayList<Student> studentsGroup1, int numberOfStudent) {
+        studentsGroup1.remove(numberOfStudent);
     }
-
-    public ArrayList<Student> addStudent(ArrayList<Student> students, Student student) {
-        students.add(student);
-        return students;
+    public void deleteStudentGroup2(ArrayList<Student> studentsGroup2, int numberOfStudent) {
+        studentsGroup2.remove(numberOfStudent);
+    }
+    public void deleteStudentGroup3(ArrayList<Student> studentsGroup3, int numberOfStudent) {
+        studentsGroup3.remove(numberOfStudent);
+    }
+    public void deleteStudentGroup4(ArrayList<Student> studentsGroup4, int numberOfStudent) {
+        studentsGroup4.remove(numberOfStudent);
+    }
+    public void addStudentsGroup1(ArrayList<Student> studentsGroup1, Student student) {
+        studentsGroup1.add(student);
+    }
+    public void addStudentsGroup2(ArrayList<Student> studentsGroup2, Student student) {
+        studentsGroup2.add(student);
+    }
+    public void addStudentsGroup3(ArrayList<Student> studentsGroup3, Student student) {
+        studentsGroup3.add(student);
+    }
+    public void addStudentsGroup4(ArrayList<Student> studentsGroup4, Student student) {
+        studentsGroup4.add(student);
     }
 
     @Override
     public String toString() {
-        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n" + this.teacher + this.students.toString();
+        return "Group - " + this.nameGroup + ", " + "course - " + this.course + ":" + "\n" + this.teacher +
+                this.students.toString();
     }
 }

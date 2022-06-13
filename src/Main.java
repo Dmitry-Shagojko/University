@@ -1,5 +1,6 @@
 import Model.*;
 import Util.AgeTeacherUtil;
+import Util.CheckAgeStudentUtil;
 import Util.Converter;
 import Util.MaxSalaryComparator;
 
@@ -35,6 +36,7 @@ public class Main {
         Address address20 = new Address("West Burley", "Barrows Flats", 30, 1);
         Address address21 = new Address("Connellymouth", "Schinner Avenue", 32, 7);
         Address address22 = new Address("South Akeemtown", "Soledad Curve", 82, 6);
+        Address address23 = new Address("South Karolina", "Soledad Avenue", 12, 3);
 
         Teacher teacher1 = new Teacher("Petra", "Gutmann", 45, "Female", address1);
         Teacher teacher2 = AgeTeacherUtil.checkAge(new Teacher("Bennett", "Pearson", 65, "Male", address2));
@@ -46,8 +48,7 @@ public class Main {
         Teacher teacher8 = new Teacher("Gwendolyn", "Zemlak Jr.", 33, "Male", address19);
         Teacher teacher9 = new Teacher("Holly", "McDermott", 59, "Female", address20);
 
-
-        Student students1 = new Student("Kathlyn", "Alison", 19, "Female", address3);
+        Student students1 = CheckAgeStudentUtil.CheckAge(new Student("Kathlyn", "Alison", 19, "Female", address3));
         Student students2 = new Student("David", "Cobb", 20, "Male", address4);
         Student students3 = new Student("Thomas", "Willis", 22, "Male", address5);
         Student students4 = new Student("Arne", "Hintz II", 19, "Male", address6);
@@ -74,10 +75,6 @@ public class Main {
             add(students12);
         }};
 
-//        students = studentsGroup1.deleteStudent(students, 2);
-//        students = group1.addStudent(students, new Student("Toy", "Lowe", 19, "Male", address13));
-//        System.out.println(group1);
-//        students.forEach(i -> System.out.println(i));
         teacher1.setSalary(110); // установить количество часов, отработанных за месяц
         teacher2.setSalary(50);
         teacher3.setSalary(100);
@@ -91,6 +88,7 @@ public class Main {
         Converter<Methodist, Teacher> converter = teacher -> new Methodist(teacher.getName(), teacher.getFamilyname(),
                 teacher.getAge(), teacher.getGender(), teacher.getAddress());
         Methodist methodist1 = converter.convert(teacher8);
+
         List<Teacher> teachers = new ArrayList<>();
         Consumer<Teacher> addListAllTeachers = teacher -> teachers.add(teacher);
         addListAllTeachers.accept(teacher1);
@@ -102,14 +100,6 @@ public class Main {
         addListAllTeachers.accept(teacher7);
         addListAllTeachers.accept(teacher8);
         addListAllTeachers.accept(teacher9);    //создан общий список учителей
-
-//        List<Teacher> listTeachers = teachers.stream()
-//                .filter(s -> !(s.getName() == methodist1.getName() && s.getFamilyname() == methodist1.getFamilyname()
-//                        && s.getAge() == methodist1.getAge() && s.getAddress() == methodist1.getAddress()))
-//                .collect(Collectors.toList());
-        //создан список учителей, относящийся к методисту (без методиста)
-//        System.out.println(methodist1);
-//        listTeachers.stream().forEach(System.out::println);
 
         teachers.stream().forEach(System.out::println);         //отображение всех учителей
 
@@ -127,48 +117,35 @@ public class Main {
 
 
         ArrayList<Student> studentsGroup1 = new ArrayList<>();
-        Consumer<Student> addStudentsGroup1 = student -> studentsGroup1.add(student);
-        Consumer<Student> deleteStudentGroup1 = student -> studentsGroup1.remove(student);
-
         ArrayList<Student> studentsGroup2 = new ArrayList<>();
-        Consumer<Student> addStudentsGroup2 = student -> studentsGroup2.add(student);
-        Consumer<Student> deleteStudentGroup2 = student -> studentsGroup2.remove(student);
-
         ArrayList<Student> studentsGroup3 = new ArrayList<>();
-        Consumer<Student> addStudentsGroup3 = student -> studentsGroup3.add(student);
-        Consumer<Student> deleteStudentGroup3 = student -> studentsGroup3.remove(student);
-
         ArrayList<Student> studentsGroup4 = new ArrayList<>();
-        Consumer<Student> addStudentsGroup4 = student -> studentsGroup4.add(student);
-        Consumer<Student> deleteStudentGroup4 = student -> studentsGroup4.remove(student);
-
-
-        addStudentsGroup1.accept(students1);
-        addStudentsGroup1.accept(students2);
-        addStudentsGroup1.accept(students3);
-
-        addStudentsGroup2.accept(students4);
-        addStudentsGroup2.accept(students5);
-        addStudentsGroup2.accept(students6);
-
-        deleteStudentGroup2.accept(students4);
-        addStudentsGroup2.accept(new Student("Toy", "Lowe", 19, "Male", address13));
-
-        addStudentsGroup3.accept(students7);
-        addStudentsGroup3.accept(students8);
-        addStudentsGroup3.accept(students9);
-
-        addStudentsGroup4.accept(students10);
-        addStudentsGroup4.accept(students11);
-        addStudentsGroup4.accept(students12);
 
         Group group1 = new Group("131B", 1, 2021, 2025, studentsGroup1, teacher1);
         Group group2 = new Group("120A", 2, 2020, 2024, studentsGroup2, teacher2);
         Group group3 = new Group("151F", 1, 2021, 2025, studentsGroup3, teacher3);
         Group group4 = new Group("110C", 2, 2020, 2024, studentsGroup4, teacher4);
 
+        group1.addStudentsGroup1(studentsGroup1, students1);
+        group1.addStudentsGroup1(studentsGroup1, students2);
+        group1.addStudentsGroup1(studentsGroup1, students3);
+        group1.addStudentsGroup1(studentsGroup1, new Student("Joy", "Lobe", 20, "Male", address23));
+        group1.deleteStudentGroup1(studentsGroup1, 2);
+
+        group2.addStudentsGroup2(studentsGroup2, students4);
+        group2.addStudentsGroup2(studentsGroup2, students5);
+        group2.addStudentsGroup2(studentsGroup2, students6);
+
+        group3.addStudentsGroup3(studentsGroup3, students7);
+        group3.addStudentsGroup3(studentsGroup3, students8);
+        group3.addStudentsGroup3(studentsGroup3, students9);
+
+        group4.addStudentsGroup4(studentsGroup4, students10);
+        group4.addStudentsGroup4(studentsGroup4, students11);
+        group4.addStudentsGroup4(studentsGroup4, students12);
+
         ArrayList<Group> listGroup = new ArrayList<>();
-        Consumer<Group> addGroup = group -> listGroup.add(group);
+        Consumer<Group> addGroup = listGroup::add;
         addGroup.accept(group1);
         addGroup.accept(group2);
         addGroup.accept(group3);
@@ -176,9 +153,9 @@ public class Main {
 
         System.out.println('\n' + "List of groups whose issue year is 2023 - 2024: ");
         listGroup.stream()                                      //ввывод списка групп, выпуск которых 2023 - 2024 года
-                .filter(g -> g.getYearOfIssue() >= 2023 && g.getYearOfIssue() <= 2024)
+                .filter(g -> g.getYearOfGraduation() >= 2023 && g.getYearOfGraduation() <= 2024)
                 .forEach(g -> System.out.println("Group - " + g.getNameGroup() +
-                        ". Year of issue - " + g.getYearOfIssue()));
+                        ". Year of issue - " + g.getYearOfGraduation()));
 
         System.out.println('\n' + "List of teachers in alphabetical order:"); //вывод списка учителей в алфавитном порядке
         ArrayList<String> sortedListTeacher = (ArrayList<String>) teachers.stream()

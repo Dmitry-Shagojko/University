@@ -45,6 +45,7 @@ public abstract class People {
 
     public void setAge(int age) {
         this.age = age;
+
     }
 
     public void setGender(String gender) {
